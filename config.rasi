@@ -1,0 +1,142 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "spacing": 4,
+    "margin-top": 3,
+    "margin-bottom": 2,
+    "margin-left": 0,
+    "margin-right": 0,
+    
+    "modules-left": [
+        "hyprland/workspaces",
+        "cpu",
+        "memory",
+        "disk"
+    ],
+    "modules-center": ["hyprland/window"],
+    "modules-right": [
+        "tray",
+        "idle_inhibitor",
+        "pulseaudio",
+        "network",
+        "clock"
+    ],
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {
+            "1": "♠",
+            "2": "♥",
+            "3": "♦",
+            "4": "♣",
+            "5": "₿",
+            "6": "⟠",
+            "7": "₮",
+            "8": "Ð",
+            "urgent": "",
+            "default": ""
+        },
+        "sort-by-number": true,
+        "disable-scroll": false,
+        "all-outputs": true
+    },
+
+    "hyprland/window": {
+        "format": "{title}",
+        "max-length": 100,
+        "separate-outputs": true,
+        "tooltip": true,
+        "tooltip-format": "{class} - {title}"
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": "{:%I:%M %p}",
+        "format-alt": "{:%Y-%m-%d %H:%M:%S}",
+        "tooltip": true,
+        "tooltip-format": "{:%A, %B %d, %Y}"
+    },
+
+    "cpu": {
+        "interval": 10,
+        "format": " {usage}%",
+        "max-length": 10,
+        "on-click": "kitty -e htop",
+        "tooltip": true,
+        "tooltip-format": "CPU Usage: {usage}%"
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": " {used:0.1f}GB",
+        "max-length": 10,
+        "tooltip": true,
+        "tooltip-format": "Used: {used:0.1f}GB ({percentage}%)\nAvailable: {avail:0.1f}GB\nTotal: {total:0.1f}GB",
+        "warning": 70,
+        "critical": 90
+    },
+
+    "network": {
+        "format": "{icon}",
+        "format-alt": "{ipaddr} {icon}",
+        "format-alt-click": "click-right",
+        "format-wifi": "{icon} ({signalStrength}%)",
+        "format-ethernet": "{icon} {ipaddr}",
+        "format-disconnected": "{icon}",
+        "format-icons": {
+            "wifi": ["睊", "直", ""],
+            "ethernet": [""],
+            "disconnected": [""]
+        },
+        "on-click": "nm-connection-editor",
+        "tooltip": true,
+        "tooltip-format": "{ifname}: {ipaddr}\nGateway: {gwaddr}"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "🎧",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "scroll-step": 5,
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "tooltip": true,
+        "tooltip-format": "Volume: {volume}%"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "tooltip": true,
+        "tooltip-format-activated": "Idle inhibitor: ON",
+        "tooltip-format-deactivated": "Idle inhibitor: OFF"
+    },
+
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10,
+        "show-passive-items": true
+    },
+
+    "disk": {
+        "interval": 30,
+        "format": " {free}",
+        "path": "/",
+        "tooltip": true,
+        "tooltip-format": "Used: {used} ({percentage_used}%)\nFree: {free} ({percentage_free}%)\nTotal: {total}"
+    }
+}
