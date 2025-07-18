@@ -1,2 +1,2 @@
 # waybar
-My custom waybar config.
+My custom rofi launcher.
